@@ -45,7 +45,7 @@ while game:
   screen.fill((0,0,0))
 
   for x,i in enumerate(values[0][::-1]):
-    py.draw.line(screen, values[1][x], (x, h), (x,i))
+    py.draw.line(screen, (255,255,255), (x, h), (x,i))
 
   py.display.update()
   clock.tick(60)
