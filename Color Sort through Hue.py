@@ -6,7 +6,6 @@ py.init()
 
 w = 765
 h = 600
-lineh = h - 300
 radius = 200
 center = [w//2,h//2]
 angle = (2*math.pi)/w

@@ -3,36 +3,29 @@ from random import randint
 import numpy as np
 py.init()
 
-w = 765
-h = 600
+w = 800
+h = 800
+length = w//2
+
 screen = py.display.set_mode((w,h))
 
-color1, color2, color3 = [], [], []
-for i in range(256):
-  color1.append((i,0,0))
-  color2.append((0,i,0))
-  color3.append((0,0,i))
-colors = color1+color2+color3
-values = [randint(h-500,h) for i in range(w)]
-values = np.array([values,colors])
+values = [randint(0,h//2) for i in range(length)]
+values = np.array([values])
 
 a, b = 0, 0
 
-def Sort():
+def BubbleSort():
   global a, b
-  for i in range(w):
-    if b < w - a - 1:
+  for i in range(length):
+    if b < length - a - 1:
       if values[0][b] > values[0][b + 1]:
         values[0][b], values[0][b + 1] = values[0][b + 1], values[0][b]
-     #   values[1][b], values[1][b + 1] = values[1][b + 1], values[1][b]
-
       b += 1
     else:
       a += 1
       b = 0
 
 clock = py.time.Clock()
-
 game = True
 while game:
   # py.time.delay(100)
@@ -41,11 +34,11 @@ while game:
     if event.type == py.QUIT:
       game = False
 
-  Sort()
+  BubbleSort()
   screen.fill((0,0,0))
 
   for x,i in enumerate(values[0][::-1]):
-    py.draw.line(screen, (255,255,255), (x, h), (x,i))
+    py.draw.line(screen, (255,255,255), (x, h//2), (x,i))
 
   py.display.update()
   clock.tick(60)
